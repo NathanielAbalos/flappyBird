@@ -40,6 +40,8 @@ let winSound = new Audio("flappyBirdWin.wav");
 let loseSound = new Audio("flappyBirdLose.wav");
 let flapSound = new Audio("flappyBirdFlap.wav");
 
+let started = false;
+
 window.onload = function startUp(){
     document.addEventListener("keydown", moveBird);
     document.addEventListener("keydown", resetGame);
@@ -67,8 +69,22 @@ window.onload = function startUp(){
     pipeDownImg = new Image();
     pipeDownImg.src = "bottompipe.png";
 
-    requestAnimationFrame(frame);
-    const timer = setInterval(generatePipes,1500);
+    window.addEventListener("keyup", ()=>{
+        if(started===false){
+            requestAnimationFrame(frame);
+            const timer = setInterval(generatePipes,1500);
+
+            started=true;
+        }
+    })
+    window.addEventListener("click", ()=>{
+        if(started===false){
+            requestAnimationFrame(frame);
+            const timer = setInterval(generatePipes,1500);
+
+            started=true;
+        }
+    })
 }
 
 
